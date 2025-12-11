@@ -163,7 +163,7 @@ def sales_menu():
 
 def main():
     while True:
-        print("""Welcome to the Employee and Client Management System
+        print("""Welcome to CLInventory System
               1. Manage Employees
               2. Manage Clients
               3. Manage Providers
