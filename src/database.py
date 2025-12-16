@@ -113,8 +113,8 @@ def update_client(client_id, name, email, phone):
     """Updates an existing client's details."""
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute("UPDATE Clients SET id = ?, name = ?, email = ?, phone = ? WHERE id = ?", (client_id,))
-        return cursor.fetchall()
+        cursor.execute("UPDATE Clients SET name = ?, email = ?, phone = ? WHERE id = ?", (name, email, phone, client_id))
+        conn.commit()
 
 def delete_client(client_id):
     """Deletes a client from the database."""
