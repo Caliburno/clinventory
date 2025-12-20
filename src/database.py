@@ -50,7 +50,17 @@ def create_database():
                     FOREIGN KEY (client_id) REFERENCES Clients(id),
                     FOREIGN KEY (product_id) REFERENCES Products(id),
                     FOREIGN KEY (employee_id) REFERENCES Employees(id)
-                    ); """)
+                    ); 
+            CREATE TABLE IF NOT EXISTS Purchases (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    provider_id INTEGER NOT NULL,
+                    product_id INTEGER NOT NULL,
+                    date TEXT NOT NULL,
+                    total REAL NOT NULL,
+                    FOREIGN KEY (provider_id) REFERENCES Providers(id),
+                    FOREIGN KEY (product_id) REFERENCES Products(id)
+                    );
+                    """)
 
 def create_employee(name, role):
     """Creates a new employee in the database."""
@@ -226,5 +236,40 @@ def delete_sale(sale_id):
     with get_connection() as conn:
         cursor = conn.cursor()
         cursor.execute("DELETE FROM Sales WHERE id = ?", (sale_id,))
+        conn.commit()
+
+def create_purchase(provider_id, product_id, date, total):
+    """Creates a new purchase in the database."""
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO Purchases (provider_id, product_id, date, total) VALUES (?, ?, ?, ?)", (provider_id, product_id, date, total))
+        conn.commit()
+
+def get_purchase(purchase_id):
+    """Retrieves a specific purchase by ID."""
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Purchases WHERE id = ?", (purchase_id,))
+        return cursor.fetchone()
+    
+def get_all_purchases():
+    """Retrieves a list of all purchases from the database."""
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM Purchases")
+        return cursor.fetchall()
+    
+def update_purchase(purchase_id, provider_id, product_id, date, total):
+    """Updates an existing purchase's details."""
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("UPDATE Purchases SET provider_id = ?, product_id = ?, date = ?, total = ? WHERE id = ?", (provider_id, product_id, date, total, purchase_id))
+        conn.commit()
+
+def delete_purchase(purchase_id):
+    """Deletes a purchase from the database."""
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM Purchases WHERE id = ?", (purchase_id,))
         conn.commit()
 
