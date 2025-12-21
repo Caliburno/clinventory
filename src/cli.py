@@ -257,6 +257,28 @@ def purchases_menu():
         else:
             print("Invalid option. Please try again.")
 
+def Purchases_menu():
+    while True:
+        print("""Purchases Management
+              1. Record Purchase
+              2. View Purchases
+              3. Back to Main Menu""")
+        choice = input("Select an option (1-3): ")
+        if choice == '1':
+            provider_id = int(input("Enter provider ID: "))
+            product_id = int(input("Enter product ID: "))
+            date = input("Enter purchase date (YYYY-MM-DD): ")
+            total = float(input("Enter total amount: "))
+            src.database.record_purchase(provider_id, product_id, date, total)
+            print("Purchase recorded successfully.")
+        elif choice == '2':
+            purchases = src.database.get_all_purchases()
+            print(tabulate(purchases, headers=["ID", "Provider ID", "Product ID", "Date", "Total"], tablefmt="grid"))
+        elif choice == '3':
+            break
+        else:
+            print("Invalid option. Please try again.")
+
 def main():
     while True:
         print("""Welcome to CLInventory System
@@ -265,8 +287,12 @@ def main():
               3. Manage Providers
               4. Manage Products
               5. Manage Sales
+<<<<<<< HEAD
               6. Manage Purchases
               7. Exit""")
+=======
+              6. Exit""")
+>>>>>>> 5b2523ad5f8fdc432fbe2a1f3f4e1f9b4583fe93
         choice = input("Select an option (1-7): ")
         if choice == '1':
             employee_menu()
@@ -279,7 +305,11 @@ def main():
         elif choice == '5':
             sales_menu()
         elif choice == '6':
+<<<<<<< HEAD
             purchases_menu()
+=======
+            Purchases_menu()
+>>>>>>> 5b2523ad5f8fdc432fbe2a1f3f4e1f9b4583fe93
         elif choice == '7':
             print("Exiting the system. Goodbye!")
             break
