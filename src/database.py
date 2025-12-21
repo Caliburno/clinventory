@@ -238,7 +238,11 @@ def delete_sale(sale_id):
         cursor.execute("DELETE FROM Sales WHERE id = ?", (sale_id,))
         conn.commit()
 
+<<<<<<< HEAD
 def record_purchase(provider_id, product_id, date, total):
+=======
+def create_purchase(provider_id, product_id, date, total):
+>>>>>>> 5b2523ad5f8fdc432fbe2a1f3f4e1f9b4583fe93
     """Creates a new purchase in the database."""
     with get_connection() as conn:
         cursor = conn.cursor()

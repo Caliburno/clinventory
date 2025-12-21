@@ -1,4 +1,4 @@
-from src.database import create_client, get_all_clients, get_client, update_client, delete_client, create_employee, get_all_employees, get_employee, update_employee, delete_employee, create_provider, get_all_providers, get_provider, update_provider, delete_provider, create_product, get_all_products, get_product, update_product, delete_product, record_sale, get_all_sales, get_sale, update_sale, delete_sale, record_purchase, get_all_purchases, update_purchase, delete_purchase
+from src.database import create_client, get_all_clients, get_client, update_client, delete_client, create_employee, get_all_employees, get_employee, update_employee, delete_employee, create_provider, get_all_providers, get_provider, update_provider, delete_provider, create_product, get_all_products, get_product, update_product, delete_product, record_sale, get_all_sales, get_sale, update_sale, delete_sale, record_purchase, get_all_purchases, get_purchase, update_purchase, delete_purchase
 from tabulate import tabulate
 
 def employee_menu():
