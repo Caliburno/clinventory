@@ -287,12 +287,8 @@ def main():
               3. Manage Providers
               4. Manage Products
               5. Manage Sales
-<<<<<<< HEAD
               6. Manage Purchases
               7. Exit""")
-=======
-              6. Exit""")
->>>>>>> 5b2523ad5f8fdc432fbe2a1f3f4e1f9b4583fe93
         choice = input("Select an option (1-7): ")
         if choice == '1':
             employee_menu()
@@ -305,11 +301,7 @@ def main():
         elif choice == '5':
             sales_menu()
         elif choice == '6':
-<<<<<<< HEAD
             purchases_menu()
-=======
-            Purchases_menu()
->>>>>>> 5b2523ad5f8fdc432fbe2a1f3f4e1f9b4583fe93
         elif choice == '7':
             print("Exiting the system. Goodbye!")
             break
